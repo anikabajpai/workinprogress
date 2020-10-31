@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="I'm a high school developer looking to create. Creator of Tile, Tap, Push!, Reaction Line, and Math Battle II.">
+        <meta name="keywords" content="Anika,Bajpai">
+        <meta name="author" content="Anika Bajpai">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/img/icon/icon.ico/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/img/icon/icon.ico/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/img/icon/icon.ico/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/icon/icon.ico/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/img/icon/icon.ico/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/icon/icon.ico/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/img/icon/icon.ico/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/icon/icon.ico/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/icon/icon.ico/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/img/icon/icon.ico/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/icon/icon.ico/img/icon/icon.ico/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/img/icon/icon.ico/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/icon/icon.ico/favicon-16x16.png">
+        <link rel="manifest" href="/img/icon/icon.ico/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/img/icon/icon.ico/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+        <title>Anika Bajpai</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body style="background: rgb(0, 0, 0);">
+
+        <!-- Navigation -->
+        <!--<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+                <li class="sidebar-brand">
+                    <a href="#top"  onclick = $("#menu-close").click(); >Anika Bajpai</a>
+                </li>
+                <li>
+                    <a href="#top" onclick = $("#menu-close").click(); >Home</a>
+                </li>
+                <li>
+                    <a href="#about" onclick = $("#menu-close").click(); >About</a>
+                </li>
+                <li>
+                    <a href="#services" onclick = $("#menu-close").click(); >Skills &amp; Education</a>
+                </li>
+                <li>
+                    <a href="#portfolio" onclick = $("#menu-close").click(); >Portfolio</a>
+                </li>
+                <li>
+                    <a href="#contact" onclick = $("#menu-close").click(); >Contact</a>
+                </li>
+            </ul>
+        </nav>-->
+
+        <div class="particleparticle">
+            <img class="box-outline resize" src="img/nameCallout.png">
+        </div>
+
+        <script src="../js/sketch.js"></script>
+        <script>
+
+            // ----------------------------------------
+            // Particle
+            // ----------------------------------------
+
+            function Particle( x, y, radius ) {
+                this.init( x, y, radius );
+            }
+
+            Particle.prototype = {
+
+                init: function( x, y, radius ) {
+
+                    this.alive = true;
+
+                    this.radius = radius || 10;
+                    this.wander = 0.15;
+                    this.theta = random( TWO_PI );
+                    this.drag = 0.92;
+                    this.color = '#fff';
+
+                    this.x = x || 0.0;
+                    this.y = y || 0.0;
+
+                    this.vx = 0.0;
+                    this.vy = 0.0;
+                },
+
+                move: function() {
+
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    this.vx *= this.drag;
+                    this.vy *= this.drag;
+
+                    this.theta += random( -0.5, 0.5 ) * this.wander;
+                    this.vx += sin( this.theta ) * 0.1;
+                    this.vy += cos( this.theta ) * 0.1;
+
+                    this.radius *= 0.96;
+                    this.alive = this.radius > 0.5;
+                },
+
+                draw: function( ctx ) {
+
+                    ctx.beginPath();
+                    ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            };
+
+            // ----------------------------------------
+            // Example
+            // ----------------------------------------
+
+            var MAX_PARTICLES = 280;
+            var COLOURS = [ '#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900', '#FF4E50', '#F9D423' ];
+
+            var particles = [];
+            var pool = [];
+
+            var demo = Sketch.create({
+                particleparticle: document.getElementById( 'particleparticle' )
+            });
+
+            demo.setup = function() {
+
+                // Set off some initial particles.
+                var i, x, y;
+
+                for ( i = 0; i < 20; i++ ) {
+                    x = ( demo.width * 0.5 ) + random( -100, 100 );
+                    y = ( demo.height * 0.5 ) + random( -100, 100 );
+                    demo.spawn( x, y );
+                }
+            };
+
+            demo.spawn = function( x, y ) {
+
+                if ( particles.length >= MAX_PARTICLES )
+                    pool.push( particles.shift() );
+
+                particle = pool.length ? pool.pop() : new Particle();
+                particle.init( x, y, random( 5, 40 ) );
+
+                particle.wander = random( 0.5, 2.0 );
+                particle.color = random( COLOURS );
+                particle.drag = random( 0.9, 0.99 );
+
+                theta = random( TWO_PI );
+                force = random( 2, 8 );
+
+                particle.vx = sin( theta ) * force;
+                particle.vy = cos( theta ) * force;
+
+                particles.push( particle );
+            };
+
+            demo.update = function() {
+
+                var i, particle;
+
+                for ( i = particles.length - 1; i >= 0; i-- ) {
+
+                    particle = particles[i];
+
+                    if ( particle.alive ) particle.move();
+                    else pool.push( particles.splice( i, 1 )[0] );
+                }
+            };
+
+            demo.draw = function() {
+
+                demo.globalCompositeOperation  = 'lighter';
+
+                for ( var i = particles.length - 1; i >= 0; i-- ) {
+                    particles[i].draw( demo );
+                }
+            };
+
+            demo.mousemove = function() {
+
+                var particle, theta, force, touch, max, i, j, n;
+
+                for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+
+                    touch = demo.touches[i], max = random( 1, 4 );
+                    for ( j = 0; j < max; j++ ) {
+                        demo.spawn( touch.x, touch.y );
+                    }
+
+                }
+            };
+
+        </script>
+
+        <!-- About -->
+        <section id="about" class="about" style="background-color: #589688;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 style="margin-bottom: -12px"><b>Hi, I'm Anika Bajpai.</b></h2>
+                        <h3 style="margin-bottom: 18px;">I'm a high school senior interested in STEM field.</h3>
+                        <p class="lead">I'm a student at Clements High School in Sugar Land, Texas. I play the trumpet in my high school band and enjoy expanding my knowledge in web development and design.</p>
+                        <p class="lead">I'm  very familiar with CSS and HTML and am comfortable working with Java and Python. I'm currently working towards attaining a responsive web design certification and have familiarized myself with basic HTML5/CSS and Applied Visual Design. I have taken accelerated classes in biology, chemistry, physics, and mathematics and am interested in expanding my knowledge in these subjects in college.</p>
+                        <!-- <p class="lead">But mostly a developer.</p> -->
+                        <a href="/resume/" class="btn btn-dark btn-lg">View My Resume</a>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </section>
+
+        <!-- Services -->
+        <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+        <section id="services" class="services bg-primary">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <h2>Skills &amp; Education</h2>
+                        <hr class="small">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="service-item">
+                                    <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-graduation-cap fa-stack-1x text-primary" style="color: #000000"></i>
+                                    </span>
+                                    <h4>
+                                        <strong>Clements High School</strong>
+                                    </h4>
+                                    <p>Class of 2021. It's been a long 4 years.</p>
+                                    <a target="_blank" href="https://www.fortbendisd.com/chs" class="btn btn-light">More on Clements</a>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="service-item">
+                                    <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-code fa-stack-1x text-primary" style="color: #000000"></i>
+                                    </span>
+                                    <h4>
+                                        <strong>Self-taught Programming</strong>
+                                    </h4>
+                                    <p>I'm a self-taught coder who loves to learn and create new projects. I also love a good programming pun.</p>
+                                    <a target="_blank" href="https://github.com/anikabajpai" class="btn btn-light">Github Account</a>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="service-item">
+                                    <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-music fa-stack-1x text-primary" style="color: #000000"></i>
+                                    </span>
+                                    <h4>
+                                        <strong>Music</strong>
+                                    </h4>
+                                    <p>I'm a band nerd. In my free time I enjoy playing the trumpet, ukelele, piano, and violin.</p>
+                                    <a href="/resume/" class="btn btn-light">See Awards</a>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="service-item">
+                                    <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-bicycle fa-stack-1x text-primary" style="color: #000000"></i>
+                                    </span>
+                                    <h4>
+                                        <strong>Biking</strong>
+                                    </h4>
+                                    <p>The bike trails are my favorite place to be. I'm an avid rider, in fact I'm probably riding my bike right now.</p>
+                                    <a href="/resume/" class="btn btn-light">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.col-lg-10 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </section>
+
+        <!-- Callout -->
+        <aside id="portfolio" class="callout">
+            <div class="text-vertical-center">
+                <h1>Portfolio</h1>
+            </div>
+        </aside>
+
+<!-- Portfolio -->
+<section class="portfolio" style="background-color: #4769c7;">
+    <div class="container">
+        <h1 style="color: rgb(255, 255, 255); text-align: center; margin-bottom: 0.5em; padding: 0; font-size: 2.5em; font-weight: 700;">Projects</h1>
+        <hr class="small" style="margin-bottom: 2.5em;">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="https://anikabajpai.github.io/physicsreview.github.io/">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/portfolio-ttp.png">
+                            </a>
+                            <h1><strong>Physics 1 Review</strong></h1>
+                            <h3>I was tired of flipping through hundreds of pages worth of notes, so I decided to create a one stop shop for studying the basic fundamentals of AP Physics 1 to make my life and my classmates lives way easier. </h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="https://youtu.be/9s3ZlhtTJm8">
+                                <img style= "border-radius: 10px" border-radius:12px class="img-portfolio img-responsive" src="img/portfolio-reaction.png">
+                            </a>
+                            <h1><strong>Indonesian Rape Crisis UNMGCY Project</strong></h1>
+                            <h3>For the United Nations MGCY Human Rights Council, I created a short video to raise awareness about the Indonesian Rape Crisis and the gender inequality prevelant in Indonesia.</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="Doc8.pdf">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/portfolio-math.png">
+                            </a>
+                            <h1><strong>The Applications of Laser Technology</strong></h1>
+                            <h3>  I wanted to learn more about laser tech after joining science olyympiad, so this is my self-assigned research paper on its applications in the modern world.</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="https://github.com/anikabajpai/amongus/tree/main/amongcord-master">
+                                <img style= "border-radius: 10px" style= "border-radius: 50px" class="img-portfolio img-responsive" src="img/portfolio-fitfarm.png">
+                            </a>
+                            <h1><strong>AmongCord</strong></h1>
+                            <h3><b></b> A discord bot for controlling voice channels during Among Us games. Created this project with some of my friends after we got addicted to Among Us.</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/portfolio-gig.png">
+                            </a>
+                            <h1><strong>Racial Inequality in America</strong></h1>
+                            <h3> This is a short video I created for the introduction to my presentation about racial inequality in the United States for the United Nations MGCY Human Rights Council.</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/portfolio-maze.png">
+                            </a>
+                            <h1><strong>Title</strong></h1>
+                            <h3><b>Bold</b>. Description.</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/portfolio-physics.png">
+                            </a>
+                            <h1><strong>Title</strong></h1>
+                            <h3>Description.</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="/">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/portfolio-animation.png">
+                            </a>
+                            <h1><strong>Title</strong></h1>
+                            <h3>Description.</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/portfolio-data.png">
+                            </a>
+                            <h1><strong>Title</strong></h1>
+                            <h3><b>Bold.</b> Description</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/portfolio-disco.png">
+                            </a>
+                            <h1><strong>Title</strong></h1>
+                            <h3>Description.</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.col-lg-10 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <div class="col-md-6 text-center">
+                    <h1 style="color: rgb(255, 255, 255); text-align: center; margin-bottom: 0.5em; padding: 0; font-size: 2.5em; font-weight: 700;">Subheading 1</h1>
+                    <hr class="small" style="margin-bottom: 2.5em;">
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/design-instimize.png">
+                            </a>
+                            <h3 style="margin-bottom: -4px"><strong>Title</Title></strong></h3>
+                            <h4>Description.</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/design-ideagenerator.png">
+                            </a>
+                            <h3 style="margin-bottom: -4px"><strong>Title</strong></h3>
+                            <h4>Description.</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" src="img/design-birdDDDP.png">
+                            </a>
+                            <h3 style="margin-bottom: -4px"><strong>Title</strong></h3>
+                            <h4>Description.</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="portfolio-item">
+                            <a href="g">
+                                <img style= "border-radius: 10px" class="img-portfolio img-responsive" style="width: 95%;" src="img/design-calenday.png">
+                            </a>
+                            <h3 style="margin-bottom: -4px"><strong>Title</strong></h3>
+                            <h4>Description.</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h1 style="color: rgb(255, 255, 255); text-align: center; margin-bottom: 0.5em; padding: 0; font-size: 2.5em; font-weight: 700;">Space Ranger Theme Sounds</h1>
+                    <h3>This is the background music I created for a game I'm developing in my free time.</h3>
+                    <hr class="small" style="margin-bottom: 2.5em;">
+                    <div class="row" style="text-align: center; padding-left: 13px; padding-bottom: 25px">
+                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/918529834%3Fsecret_token%3Ds-65AcmTX1Elx&color=%23784e65&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/anikabajpai" title="anikabajpai" target="_blank" style="color: #cccccc; text-decoration: none;">anikabajpai</a> · <a href="https://soundcloud.com/anikabajpai/mission-call/s-65AcmTX1Elx" title="Mission Call" target="_blank" style="color: #cccccc; text-decoration: none;">Mission Call</a></div>
+                        "></iframe>
+                    </div>
+                    <div class="row" style="text-align: center; padding-left: 13px">
+                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/918539497%3Fsecret_token%3Ds-eQ0QxDIu4WJ&color=%23784e65&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/anikabajpai" title="anikabajpai" target="_blank" style="color: #cccccc; text-decoration: none;">anikabajpai</a> · <a href="https://soundcloud.com/anikabajpai/asteroid-drop/s-eQ0QxDIu4WJ" title="Asteroid Drop" target="_blank" style="color: #cccccc; text-decoration: none;">Asteroid Drop</a></div>
+                        "></iframe>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-10 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+        <!-- Call to Action -->
+        <aside id= "contact" class="call-to-action bg-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h3>But wait, there's more!</h3>
+                        <a href="/resume/" class="btn btn-lg btn-light">View My Resume</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Map -->
+        <!-- <section id="contact" class="map">
+        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+        <br>
+        <small>
+            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
+        </small>
+        </iframe>
+        </section> -->
+
+        <!-- Footer -->
+        <footer style="background-color: #589688;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1 text-center">
+                        <h4><strong>Anika Bajpai</strong>
+                        </h4>
+                        <p>Houston, TX.</p>
+                        <ul class="list-unstyled">
+                            <!-- <li><i class="fa fa-phone fa-fw"></i> (480) 789-1196</li> -->
+                            <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:anikabajpai1@gmail.com">anikabajpai1@gmail.com</a>
+                            </li>
+                        </ul>
+                        <hr class="small">
+                        <ul class="list-inline">
+                            
+                            <li>
+                                <a href="https://github.com/anikabajpai"><i class="fa fa-github fa-fw fa-3x" style="color: #000"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/anika-bajpai-6b02721ab/"><i class="fa fa-linkedin fa-fw fa-3x" style="color: #000"></i></a>
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                           
+                            <li>
+                                <a href="https://stackoverflow.com/users/story/13926800"><i class="fa fa-stack-overflow fa-fw fa-3x" style="color: #000"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://medium.com/@anikabajpai1"><i class="fa fa-medium fa-fw fa-3x" style="color: #000"></i></a>
+                            </li>
+                            
+                        </ul>
+                        <ul class="list-inline" style="margin-top: 20px;">
+                            <li>
+                                <a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
+                            </li>
+                        </ul>
+                        <hr class="small">
+                        <p class="text-muted">
+                            Copyright &copy; 2020 Anika Bajpai. 
+                            Theme from <a href=http://startbootstrap.com/template-overviews/stylish-portfolio/>Start Bootstrap</a>. 
+                            Animation from <a href=http://soulwire.co.uk/>Justin Windle</a>. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script>
+            // Closes the sidebar menu
+            $("#menu-close").click(function(e) {
+                e.preventDefault();
+                $("#sidebar-wrapper").toggleClass("active");
+            });
+
+            // Opens the sidebar menu
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#sidebar-wrapper").toggleClass("active");
+            });
+
+            // Scrolls to the selected menu item on the page
+            $(function() {
+                $('a[href*=#]:not([href=#])').click(function() {
+                    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                        if (target.length) {
+                            $('html,body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    }
+                });
+            });
+        </script>
+
+        <script>
+            /**
+            * Cache
+            */
+            var $content = $('header .test-wrapper')
+            , $blur    = $('header .overlay')
+            , wHeight  = $(window).height();
+
+            $(window).on('resize', function(){
+                wHeight = $(window).height();
+            });
+
+            /**
+            * requestAnimationFrame Shim 
+            */
+            window.requestAnimFrame = (function()
+                                       {
+                return  window.requestAnimationFrame       ||
+                    window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame    ||
+                    function( callback ){
+                    window.setTimeout(callback, 1000 / 60);
+                };
+            })();
+
+            /**
+            * Scroller
+            */
+            function Scroller()
+            {
+                this.latestKnownScrollY = 0;
+                this.ticking            = false;
+            }
+
+            Scroller.prototype = {
+                /**
+                * Initialize
+                */
+                init: function() {
+                    window.addEventListener('scroll', this.onScroll.bind(this), false);
+                },
+
+                /**
+                * Capture Scroll
+                */
+                onScroll: function() {
+                    this.latestKnownScrollY = window.scrollY;
+                    this.requestTick();
+                },
+
+                /**
+                * Request a Tick
+                */
+                requestTick: function() {
+                    if( !this.ticking ) {
+                        window.requestAnimFrame(this.update.bind(this));
+                    }
+                    this.ticking = true;
+                },
+
+                /**
+                * Update.
+                */
+                update: function() {
+                    var currentScrollY = this.latestKnownScrollY;
+                    this.ticking       = false;
+
+                    /**
+                    * Do The Dirty Work Here
+                    */
+                    var slowScroll = currentScrollY / 4
+                    , blurScroll = currentScrollY * 2;
+
+                    $content.css({
+                        'transform'         : 'translateY(-' + slowScroll + 'px)',
+                        '-moz-transform'    : 'translateY(-' + slowScroll + 'px)',
+                        '-webkit-transform' : 'translateY(-' + slowScroll + 'px)'
+                    });
+
+                    $blur.css({
+                        'opacity' : blurScroll / wHeight
+                    });
+                }
+            };
+
+            /**
+            * Attach!
+            */
+            var scroller = new Scroller();  
+            scroller.init();
+        </script>
+        
+        <!-- Google Analytics Tracking Code -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-71814830-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
